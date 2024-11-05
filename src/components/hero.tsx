@@ -33,12 +33,20 @@ export const Hero = ({ title, imageUrl, className, theme }: HeroProps) => (
           'absolute bottom-0 left-0 px-8 py-16 pt-32 w-full bg-gradient-to-b text-white flex items-end',
           theme === 'blue' ? 'from-transparent to-primary-400' : 'from-transparent to-secondary-400',
         )}
+        initial={{ opacity: 0, y: '100%' }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 0.25,
+          ease: 'easeInOut',
+          duration: 0.5,
+        }}
       >
         <motion.h2
           className="text-fluid-3xl leading-[1.1] w-[60%]"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0, y: '100%' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
+            delay: 0.75,
             ease: 'easeInOut',
             duration: 0.5,
           }}

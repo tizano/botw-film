@@ -38,8 +38,13 @@ export default function Home() {
         <main className={cn('min-h-screen pt-[80px]', theme === 'blue' ? 'bg-primary-400' : 'bg-secondary-400')}>
           <Header title={data.title} toggleTheme={toggleTheme} theme={theme} />
           <article>
-            <Hero theme={theme} title={data.title_hero} imageUrl={data.image_hero} />
-            <Video videoUrl={data.video} className="pt-16" />
+            <Hero
+              key={`${theme}-${Date.now() - 10}`}
+              theme={theme}
+              title={data.title_hero}
+              imageUrl={data.image_hero}
+            />
+            <Video key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} className="pt-16" />
             <Synopsis data={data} theme={theme} className="pt-16 pb-40" />
           </article>
         </main>
