@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Jacques_Francois } from 'next/font/google';
+
+import { ReenieBeanieSans, RobotoSans, serif } from './fonts/fonts';
 import './globals.css';
 
 // const geistSans = localFont({
@@ -7,10 +8,6 @@ import './globals.css';
 //   variable: '--font-geist-sans',
 //   weight: '100 900',
 // });
-const serif = Jacques_Francois({
-  weight: '400',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${serif.className} antialiased`}>{children}</body>
+      <body className={`${serif.className} ${ReenieBeanieSans.className} ${RobotoSans.className} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

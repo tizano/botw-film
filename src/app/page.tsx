@@ -5,17 +5,23 @@ import { Synopsis } from '@/components/synopsis';
 import { useToggleTheme } from '@/components/toggle-theme';
 import { useEffect, useState } from 'react';
 
+import { Header } from '@/components/header';
+import { Video } from '@/components/video';
 import { FilmData, filmsData } from '@/data/data';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   const { theme, toggleTheme } = useToggleTheme();
   const [data, setData] = useState<FilmData>({
     title: '',
-    description: '',
+    title_hero: '',
+    title_synopsis: '',
     synopsis: '',
-    image1: '',
-    image2: '',
-    image3: '',
+    image_hero: '',
+    image1_synopsis: '',
+    image2_synopsis: '',
+    image3_synopsis: '',
+    video: '',
   });
 
   useEffect(() => {
@@ -29,18 +35,12 @@ export default function Home() {
       <Intro theme={theme} toggleTheme={toggleTheme} />
 
       {theme && (
-        <main className="min-h-screen" style={{ backgroundColor: theme }}>
-          <header>
-            <h1>{data.title}</h1>
-            <nav>
-              <button onClick={() => toggleTheme('blue')}>Blue</button>
-              <button onClick={() => toggleTheme('red')}>Red</button>
-            </nav>
-          </header>
+        <main className={cn('min-h-screen pt-[80px]', theme === 'blue' ? 'bg-primary-400' : 'bg-secondary-400')}>
+          <Header title={data.title} toggleTheme={toggleTheme} theme={theme} />
           <article>
-            <Hero imageUrl={data.image1} />
-            <video src="/video.mp4" controls></video>
-            <Synopsis />
+            <Hero imageUrl={data.image_hero} />
+            <Video videoUrl={data.video} theme={theme} className="pt-16" />
+            <Synopsis data={data} theme={theme} className="pt-16 pb-40" />
           </article>
         </main>
       )}
