@@ -24,7 +24,7 @@ export const filmsData: FilmDataWithTheme = {
     image_hero: '/hero-blue.webp',
     image1_synopsis: '/char-blue.png',
     image2_synopsis: '/synopsis-blue.webp',
-    video: '/blue-To_Every_You_Ive_Loved_Before.mp4',
+    video: 'https://www.youtube.com/embed/MvzmBuIeJmU',
     image3_synopsis: '/char-blue-2.png',
   },
   red: {
@@ -36,6 +36,6 @@ export const filmsData: FilmDataWithTheme = {
     image_hero: '/hero-red.webp',
     image2_synopsis: '/synopsis-red.webp',
     image1_synopsis: '/char-red.png',
-    video: '/red-To_Me_The_One_Who_Loved_You__-_New_PV.mp4',
+    video: 'https://www.youtube.com/embed/kLbN4JtzLbU',
   },
 };
