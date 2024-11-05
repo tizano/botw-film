@@ -26,7 +26,7 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
     <Container htmlTag="div" className="relative">
       <div className={cn('relative z-10 flex gap-16 items-end justify-between', theme === 'red' && 'flex-row-reverse')}>
         <div className={cn('flex items-end justify-between', theme === 'red' && 'flex-row-reverse')}>
-          <Image src={data.image1_synopsis} alt="synopsis" width={320} height={700} className="" />
+          <Image src={data.image1_synopsis} alt="synopsis" width={320} height={700} />
           <div className="flex flex-col gap-4 mb-20">
             <h2 className="text-fluid-md font-bold">{data.title}</h2>
             <p dangerouslySetInnerHTML={{ __html: data.synopsis }}></p>

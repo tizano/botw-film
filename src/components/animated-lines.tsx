@@ -18,7 +18,7 @@ const AnimatedLines: React.FC<AnimatedLinesProps> = ({ numberOfLines, color }) =
     const createPathString = () => {
       let completedPath = '';
       const comma = ',';
-      const ampl = 50;
+      const ampl = 20;
 
       for (let i = 0; i < numberOfLines; i++) {
         const path = lineDataArr[i];
@@ -43,22 +43,22 @@ const AnimatedLines: React.FC<AnimatedLinesProps> = ({ numberOfLines, color }) =
 
     const createLines = () => {
       const newPathEl: SVGPathElement = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      const minSpeed = 85;
+      const minSpeed = 120;
       const maxSpeed = 150;
       newPathEl.setAttribute('stroke', color);
 
       for (let i = 0; i < numberOfLines; i++) {
         const lineDataObj = {
           counter: randomRange(1, 500),
-          startX: randomRange(-5, -40),
-          startY: randomRange(-5, -30),
-          endX: randomRange(200, 220),
-          endY: randomRange(120, 140),
+          startX: randomRange(-220, -240),
+          startY: randomRange(50, 70),
+          endX: randomRange(320, 340),
+          endY: randomRange(20, 40),
           sin: randomRange(minSpeed, maxSpeed),
           cos: randomRange(minSpeed, maxSpeed),
-          pointX: randomRange(30, 55),
+          pointX: randomRange(-20, -55),
           centerX: randomRange(90, 120),
-          centerY: randomRange(60, 70),
+          centerY: randomRange(55, 65),
         };
 
         lineDataArr.push(lineDataObj);
