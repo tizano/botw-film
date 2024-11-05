@@ -1,9 +1,7 @@
-import { Theme } from '@/data/data';
 import { cn } from '@/lib/utils';
 import * as motion from 'framer-motion/client';
 
 interface VideoProps {
-  theme: Theme;
   videoUrl: string;
   className?: string;
 }
@@ -15,7 +13,7 @@ const getIdFromVideoUrl = (url: string) => {
   return videoId;
 };
 
-export const Video = ({ theme, videoUrl, className }: VideoProps) => (
+export const Video = ({ videoUrl, className }: VideoProps) => (
   <section className={cn('w-full', className)}>
     <motion.div
       initial={{ opacity: 0 }}
