@@ -38,7 +38,7 @@ export default function Home() {
         <main className={cn('min-h-screen pt-[80px]', theme === 'blue' ? 'bg-primary-400' : 'bg-secondary-400')}>
           <Header title={data.title} toggleTheme={toggleTheme} theme={theme} />
           <article>
-            <Hero imageUrl={data.image_hero} />
+            <Hero theme={theme} title={data.title_hero} imageUrl={data.image_hero} />
             <Video videoUrl={data.video} theme={theme} className="pt-16" />
             <Synopsis data={data} theme={theme} className="pt-16 pb-40" />
           </article>

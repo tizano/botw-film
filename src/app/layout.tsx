@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { ReenieBeanieSans, RobotoSans, serif } from './fonts/fonts';
+import { RobotoSans } from './fonts/fonts';
 import './globals.css';
 
 // const geistSans = localFont({
@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${serif.className} ${ReenieBeanieSans.className} ${RobotoSans.className} antialiased`}>
-        {children}
-      </body>
+      <body className={`${RobotoSans.className} antialiased`}>{children}</body>
     </html>
   );
 }

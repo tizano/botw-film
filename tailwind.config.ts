@@ -20,6 +20,7 @@ const config: Config = {
         fhd: '1920px',
       },
       fontSize: {
+        'fluid-4xl': 'clamp(2.25rem, 1.5294rem + 2.7451vw, 4rem)',
         'fluid-3xl': 'clamp(3rem, 1.9rem + 2.5vw, 6rem)',
         'fluid-2xl': 'clamp(2.5rem, 1.8824rem + 2.3529vw, 4rem)',
         'fluid-xxl': 'clamp(2.25rem, 1.8382rem + 1.5686vw, 3.25rem)',
