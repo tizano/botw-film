@@ -15,13 +15,6 @@ export const IconPortal: React.FC = () => (
         />
       </g>
     </switch>
-    <text
-      fill="#ffffff"
-      font-size="0"
-      font-weight="bold"
-      font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
-    >
-      Created by Gregor Cresnar from the Noun Project
-    </text>
+    <text fontSize="0">Created by Gregor Cresnar from the Noun Project</text>
   </svg>
 );
