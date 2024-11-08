@@ -47,9 +47,14 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
       )}
     >
       <div className="flex">
-        {Object.entries(timeLeft).map(([unit, value]) => (
+        {Object.entries(timeLeft).map(([unit, value], index) => (
           <div key={unit} className="flex items-start justify-center relative">
-            <div className="flex flex-col items-center justify-center relative after:content-[':'] after:top-[1.75rem] after:right-0 after:absolute">
+            <div
+              className={cn(
+                'flex flex-col items-center justify-center relative after:content-[":"] after:top-[1.75rem] after:right-0 after:absolute',
+                index === 3 && 'after:hidden',
+              )}
+            >
               <span className="text-fluid-xxl px-8">{value < 10 ? `0${value}` : value}</span>
               <span className="text-fluid-sm">{unit}</span>
             </div>

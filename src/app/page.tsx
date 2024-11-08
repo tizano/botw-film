@@ -5,6 +5,7 @@ import { Synopsis } from '@/components/synopsis';
 import { useToggleTheme } from '@/components/toggle-theme';
 import { useEffect, useRef, useState } from 'react';
 
+import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
 import { Location } from '@/components/location';
 import { Video } from '@/components/video';
@@ -43,21 +44,24 @@ export default function Home() {
       <Intro theme={theme} toggleTheme={toggleTheme} />
 
       {theme && (
-        <main className={cn('min-h-screen pt-[80px]', theme === 'blue' ? 'bg-primary-400' : 'bg-secondary-400')}>
-          <Header title={data.title} toggleTheme={toggleTheme} theme={theme} />
-          <article>
-            <Hero
-              key={`${theme}-${Date.now() - 10}`}
-              theme={theme}
-              title={data.title_hero}
-              imageUrl={data.image_hero}
-              scrollToVideo={scrollToVideo}
-            />
-            <Video ref={ref} key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} />
-            <Synopsis data={data} theme={theme} className="pt-20 pb-20" />
-            <Location theme={theme} className="pt-[200px]" />
-          </article>
-        </main>
+        <>
+          <main className={cn('min-h-screen pt-[80px]', theme === 'blue' ? 'bg-primary-400' : 'bg-secondary-400')}>
+            <Header title={data.title} toggleTheme={toggleTheme} theme={theme} />
+            <article>
+              <Hero
+                key={`${theme}-${Date.now() - 10}`}
+                theme={theme}
+                title={data.title_hero}
+                imageUrl={data.image_hero}
+                scrollToVideo={scrollToVideo}
+              />
+              <Video ref={ref} key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} />
+              <Synopsis data={data} theme={theme} className="pt-20 pb-28" />
+              <Location theme={theme} className="pt-[200px]" />
+            </article>
+          </main>
+          <Footer theme={theme} />
+        </>
       )}
     </>
   );
