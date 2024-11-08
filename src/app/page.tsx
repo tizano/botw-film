@@ -3,9 +3,10 @@ import { Hero } from '@/components/hero';
 import { Intro } from '@/components/intro';
 import { Synopsis } from '@/components/synopsis';
 import { useToggleTheme } from '@/components/toggle-theme';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Header } from '@/components/header';
+import { Location } from '@/components/location';
 import { Video } from '@/components/video';
 import { FilmData, filmsData } from '@/data/data';
 import { cn } from '@/lib/utils';
@@ -24,11 +25,18 @@ export default function Home() {
     video: '',
   });
 
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (theme) {
       setData(filmsData[theme]);
     }
   }, [theme]);
+
+  const scrollToVideo = () => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -43,9 +51,11 @@ export default function Home() {
               theme={theme}
               title={data.title_hero}
               imageUrl={data.image_hero}
+              scrollToVideo={scrollToVideo}
             />
-            <Video key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} className="pt-16" />
-            <Synopsis data={data} theme={theme} className="pt-16 pb-40" />
+            <Video ref={ref} key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} />
+            <Synopsis data={data} theme={theme} className="pt-20 pb-20" />
+            <Location theme={theme} className="pt-[200px]" />
           </article>
         </main>
       )}

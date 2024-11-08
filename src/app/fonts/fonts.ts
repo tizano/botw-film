@@ -10,6 +10,6 @@ export const ReenieBeanieSans = Reenie_Beanie({
 });
 
 export const RobotoSans = Roboto({
-  weight: '400',
+  weight: ['400', '500'],
   subsets: ['latin'],
 });

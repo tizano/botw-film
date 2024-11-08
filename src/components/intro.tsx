@@ -100,7 +100,7 @@ export const Intro: React.FC<IntroProps> = ({ theme, toggleTheme }) => {
           )}
         >
           <Image
-            src="/image-blue.png"
+            src="/blue-film-Kimi.webp"
             alt="Affiche du film To Every You I've Loved Before"
             width={1600}
             height={1080}
@@ -122,7 +122,7 @@ export const Intro: React.FC<IntroProps> = ({ theme, toggleTheme }) => {
           )}
         >
           <Image
-            src="/image-red.jpg"
+            src="/red-film-Kimi.webp"
             alt="Affiche du film To Me, The One Who Loved You"
             width={1600}
             height={1080}

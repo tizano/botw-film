@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
-import * as motion from 'framer-motion/client';
+import { motion } from 'framer-motion';
+import { forwardRef } from 'react';
 
 interface VideoProps {
   videoUrl: string;
@@ -13,8 +14,8 @@ const getIdFromVideoUrl = (url: string) => {
   return videoId;
 };
 
-export const Video = ({ videoUrl, className }: VideoProps) => (
-  <section className={cn('w-full', className)}>
+const Video = forwardRef<HTMLDivElement, VideoProps>(({ videoUrl, className }, ref) => (
+  <section ref={ref} className={cn('w-full', className)}>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -33,4 +34,7 @@ export const Video = ({ videoUrl, className }: VideoProps) => (
       ></iframe>
     </motion.div>
   </section>
-);
+));
+
+Video.displayName = 'Video';
+export { Video };

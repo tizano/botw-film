@@ -9,9 +9,10 @@ interface HeroProps {
   imageUrl: string;
   theme: Theme;
   className?: string;
+  scrollToVideo: () => void;
 }
 
-export const Hero = ({ title, imageUrl, className, theme }: HeroProps) => (
+export const Hero = ({ title, imageUrl, className, theme, scrollToVideo }: HeroProps) => (
   <section className={cn('overflow-hidden h-full relative', className)} style={{ maxHeight: 'calc(100vh - 48px)' }}>
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -55,7 +56,7 @@ export const Hero = ({ title, imageUrl, className, theme }: HeroProps) => (
         </motion.h2>
       </motion.div>
       <motion.div
-        className="absolute bottom-20 right-12 z-10"
+        className="absolute bottom-20 right-12 z-10 cursor-pointer px-4"
         transition={{
           ease: 'easeInOut',
           duration: 0.5,
@@ -64,6 +65,7 @@ export const Hero = ({ title, imageUrl, className, theme }: HeroProps) => (
           bounce: 0.5,
         }}
         animate={{ y: 20 }}
+        onClick={scrollToVideo}
       >
         <MoveDown size={56} color="white" />
       </motion.div>
