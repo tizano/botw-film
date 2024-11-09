@@ -12,17 +12,17 @@ export const Cards: React.FC<CardsProps> = ({ theme }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-200px' });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
   const controlsLeft = useAnimation();
   const controlsRight = useAnimation();
 
   const cardLeftVariants: Variants = {
     hidden: { opacity: 0, x: ['30%', '25%', 0] },
-    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut', delay: 0.5 } },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut' } },
   };
   const cardRightVariants: Variants = {
     hidden: { opacity: 0, x: ['-30%', '-25%', 0] },
-    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut', delay: 0.5 } },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut' } },
   };
 
   useEffect(() => {

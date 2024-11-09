@@ -53,7 +53,8 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
           <motion.div
             className="max-w-[280px] w-full shrink"
             initial="hidden"
-            animate="visibleChar1"
+            whileInView="visibleChar1"
+            viewport={{ once: true, amount: 0.5 }}
             variants={theme === 'blue' ? blueVariants : redVariants}
           >
             <Image src={data.image1_synopsis} alt="synopsis" width={320} height={700} className="w-full" />
@@ -61,7 +62,8 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
           <motion.div
             className="flex flex-col gap-4 mb-20 w-[360px] fhd:w-[420px] shrink-0"
             initial="hidden"
-            animate="visibleText"
+            whileInView="visibleText"
+            viewport={{ once: true, amount: 0.5 }}
             variants={theme === 'blue' ? blueVariants : redVariants}
           >
             <h2 className="text-fluid-xl leading-[1.2] mb-10">{data.title_synopsis}</h2>
@@ -72,8 +74,9 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
           <motion.div
             className={cn('w-full flex', theme === 'red' && 'justify-end')}
             initial="hidden"
-            animate="visibleImage"
             variants={theme === 'blue' ? blueVariants : redVariants}
+            viewport={{ once: true, amount: 0.5 }}
+            whileInView="visibleImage"
           >
             <Image
               src={data.image2_synopsis}
@@ -89,7 +92,8 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
               theme === 'red' ? '2xl:left-0 lg:-left-8' : '2xl:right-0 lg:-right-8',
             )}
             initial="hiddenChar2"
-            animate="visibleChar2"
+            whileInView="visibleChar2"
+            viewport={{ once: true, amount: 0.5 }}
             variants={theme === 'blue' ? blueVariants : redVariants}
           >
             <Image src={data.image3_synopsis} alt="synopsis" width={140} height={700} className="w-[140px]" />

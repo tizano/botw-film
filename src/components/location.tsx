@@ -35,7 +35,8 @@ export const Location: React.FC<LocationProps> = ({ theme, className }) => {
           <motion.div
             className="flex flex-col gap-10 min-w-96"
             initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5, delay: 0.5, ease: 'easeInOut' }}
           >
             <Accordion type="single" collapsible>

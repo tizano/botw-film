@@ -50,7 +50,8 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
         <motion.span
           className="block"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
           Enjoy the film from
@@ -58,7 +59,8 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
         <motion.span
           className="text-fluid-lg font-bold block"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.25 }}
         >
           November 23, 2024
@@ -73,7 +75,8 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
                 index === 3 && 'after:hidden',
               )}
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
               <span className="text-fluid-xl px-8">{value < 10 ? `0${value}` : value}</span>
