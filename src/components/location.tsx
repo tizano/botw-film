@@ -2,6 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { citiesData } from '@/data/citiesData';
 import { Theme } from '@/data/data';
 import { cn } from '@/lib/utils';
+import * as motion from 'framer-motion/client';
 import { Tickets } from 'lucide-react';
 import { Cards } from './cards';
 import { Container } from './container';
@@ -22,16 +23,21 @@ export const Location: React.FC<LocationProps> = ({ theme, className }) => {
           ? 'bg-gradient-to-b from-white to-primary-400'
           : 'bg-gradient-to-b from-white to-secondary-400',
         className,
-        'py-[100px]',
+        'py-[100px] overflow-hidden',
       )}
     >
       <Container htmlTag="div">
         <div className="flex-items-center justify-center mb-24">
-          <Countdown eventDate={eventDate} />
+          <Countdown eventDate={eventDate} key={Date.now()} />
         </div>
         <div className="flex justify-center gap-28 items-start">
           <Cards theme={theme} />
-          <div className="flex flex-col gap-10 min-w-96">
+          <motion.div
+            className="flex flex-col gap-10 min-w-96"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: 'easeInOut' }}
+          >
             <Accordion type="single" collapsible>
               {citiesData.map((city) => (
                 <AccordionItem key={city.city} value={city.city}>
@@ -58,7 +64,7 @@ export const Location: React.FC<LocationProps> = ({ theme, className }) => {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

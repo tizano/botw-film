@@ -56,8 +56,8 @@ export default function Home() {
                 scrollToVideo={scrollToVideo}
               />
               <Video ref={ref} key={`${theme}-${Date.now() - 20}`} videoUrl={data.video} />
-              <Synopsis data={data} theme={theme} className="pt-20 pb-28" />
-              <Location theme={theme} className="pt-[200px]" />
+              <Synopsis key={`${theme}-${Date.now() - 30}`} data={data} theme={theme} className="pt-20 pb-28" />
+              <Location key={`${theme}-${Date.now() - 40}`} theme={theme} className="pt-[200px]" />
             </article>
           </main>
           <Footer theme={theme} />

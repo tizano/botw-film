@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
+import * as motion from 'framer-motion/client';
 import { useEffect, useState } from 'react';
 
 interface CountdownProps {
@@ -46,22 +47,38 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
       )}
     >
       <h2 className="text-fluid-md text-center font-normal mb-4">
-        Enjoy the film from
-        <br />
-        <span className="text-fluid-lg font-bold">November 23, 2024</span>
+        <motion.span
+          className="block"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Enjoy the film from
+        </motion.span>
+        <motion.span
+          className="text-fluid-lg font-bold block"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+        >
+          November 23, 2024
+        </motion.span>
       </h2>
       <div className="flex">
         {Object.entries(timeLeft).map(([unit, value], index) => (
           <div key={unit} className="flex items-start justify-center relative">
-            <div
+            <motion.div
               className={cn(
                 'flex flex-col items-center justify-center relative after:content-[":"] after:top-[1.75rem] after:right-0 after:absolute',
                 index === 3 && 'after:hidden',
               )}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
             >
               <span className="text-fluid-xl px-8">{value < 10 ? `0${value}` : value}</span>
               <span className="text-fluid-sm">{unit}</span>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>

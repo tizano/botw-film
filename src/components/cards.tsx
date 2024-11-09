@@ -1,5 +1,7 @@
 import { Theme } from '@/data/data';
-import { useEffect, useState } from 'react';
+import { useAnimation, useInView, Variants } from 'framer-motion';
+import * as motion from 'framer-motion/client';
+import { useEffect, useRef, useState } from 'react';
 import { Card } from './card/card';
 
 interface CardsProps {
@@ -9,6 +11,26 @@ interface CardsProps {
 export const Cards: React.FC<CardsProps> = ({ theme }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-200px' });
+  const controlsLeft = useAnimation();
+  const controlsRight = useAnimation();
+
+  const cardLeftVariants: Variants = {
+    hidden: { opacity: 0, x: ['30%', '25%', 0] },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut', delay: 0.5 } },
+  };
+  const cardRightVariants: Variants = {
+    hidden: { opacity: 0, x: ['-30%', '-25%', 0] },
+    visible: { opacity: 1, x: 0, transition: { duration: 1, ease: 'easeInOut', delay: 0.5 } },
+  };
+
+  useEffect(() => {
+    if (isInView) {
+      controlsLeft.start('visible');
+      controlsRight.start('visible');
+    }
+  }, [controlsLeft, controlsRight, isInView]);
 
   useEffect(() => {
     if (selectedCard !== null) {
@@ -53,9 +75,15 @@ export const Cards: React.FC<CardsProps> = ({ theme }) => {
   };
 
   return (
-    <div className="flex gap-8" onClick={(e) => e.stopPropagation()}>
+    <div ref={ref} className="flex gap-8" onClick={(e) => e.stopPropagation()}>
       {/* Première carte */}
-      <div onMouseMove={selectedCard === 0 ? handleMouseMove : undefined} onMouseLeave={handleMouseLeave}>
+      <motion.div
+        onMouseMove={selectedCard === 0 ? handleMouseMove : undefined}
+        onMouseLeave={handleMouseLeave}
+        animate={controlsLeft}
+        initial="hidden"
+        variants={cardLeftVariants}
+      >
         <Card
           src={theme === 'blue' ? '/ticket1-1.png' : '/ticket2-1.png'}
           isSelected={selectedCard === 0}
@@ -63,12 +91,15 @@ export const Cards: React.FC<CardsProps> = ({ theme }) => {
           rotation={rotation}
           zIndex={selectedCard === 0 ? 2 : 1} // La carte sélectionnée aura un z-index plus élevé
         />
-      </div>
+      </motion.div>
       {/* Deuxième carte */}
-      <div
+      <motion.div
         onMouseMove={selectedCard === 1 ? handleMouseMove : undefined}
         onMouseLeave={handleMouseLeave}
         className="relative"
+        animate={controlsRight}
+        initial="hidden"
+        variants={cardRightVariants}
       >
         <Card
           src={theme === 'blue' ? '/ticket1-2.png' : '/ticket2-2.png'}
@@ -77,7 +108,7 @@ export const Cards: React.FC<CardsProps> = ({ theme }) => {
           rotation={rotation}
           zIndex={selectedCard === 1 ? 2 : 1} // La carte sélectionnée aura un z-index plus élevé
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
