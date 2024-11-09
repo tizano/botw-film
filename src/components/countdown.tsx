@@ -17,7 +17,6 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
 
   useEffect(() => {
     const targetDate = new Date(eventDate);
-    targetDate.setMonth(targetDate.getMonth() + 2);
 
     const timer = setInterval(() => {
       const now = new Date();
