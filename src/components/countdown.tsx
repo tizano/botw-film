@@ -46,9 +46,9 @@ export const Countdown: React.FC<CountdownProps> = ({ eventDate, className }) =>
       )}
     >
       <h2 className="text-fluid-md text-center font-normal mb-4">
-        Profitez du film à partir
+        Enjoy the film from
         <br />
-        <span className="text-fluid-lg font-bold">du 23 novembre 2024</span>
+        <span className="text-fluid-lg font-bold">November 23, 2024</span>
       </h2>
       <div className="flex">
         {Object.entries(timeLeft).map(([unit, value], index) => (
