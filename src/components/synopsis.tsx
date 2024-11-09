@@ -30,7 +30,7 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
           alt="synopsis"
           width={320}
           height={700}
-          className={cn(theme === 'red' ? 'max-w-[280px] w-full' : 'max-w-[280px] w-full', 'shrink')}
+          className="max-w-[280px] w-full shrink"
         />
         <div className="flex flex-col gap-4 mb-20 w-[360px] fhd:w-[420px] shrink-0">
           <h2 className="text-fluid-xl leading-[1.2] mb-10">{data.title_synopsis}</h2>
@@ -41,11 +41,14 @@ export const Synopsis: React.FC<SynopsisProps> = ({ className, theme, data }) =>
         <div className={cn('w-full flex', theme === 'red' && 'justify-end')}>
           <Image src={data.image2_synopsis} alt="synopsis" width={600} height={840} className="shrink-0 object-cover" />
         </div>
-        {theme === 'blue' && data.image3_synopsis && (
-          <div className="absolute bottom-0 z-10 right-0">
-            <Image src={data.image3_synopsis} alt="synopsis" width={320} height={700} className="w-full" />
-          </div>
-        )}
+        <div
+          className={cn(
+            'absolute bottom-0 z-10 ',
+            theme === 'red' ? '2xl:left-0 lg:-left-8' : '2xl:right-0 lg:-right-8',
+          )}
+        >
+          <Image src={data.image3_synopsis} alt="synopsis" width={140} height={700} className="w-[140px]" />
+        </div>
       </div>
     </Container>
   </section>

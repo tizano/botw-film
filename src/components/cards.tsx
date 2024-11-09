@@ -1,7 +1,12 @@
+import { Theme } from '@/data/data';
 import { useEffect, useState } from 'react';
 import { Card } from './card/card';
 
-export const Cards: React.FC = () => {
+interface CardsProps {
+  theme: Theme;
+}
+
+export const Cards: React.FC<CardsProps> = ({ theme }) => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
@@ -52,7 +57,7 @@ export const Cards: React.FC = () => {
       {/* Première carte */}
       <div onMouseMove={selectedCard === 0 ? handleMouseMove : undefined} onMouseLeave={handleMouseLeave}>
         <Card
-          src="/ticket1-1.png"
+          src={theme === 'blue' ? '/ticket1-1.png' : '/ticket2-1.png'}
           isSelected={selectedCard === 0}
           onClick={(e) => handleCardClick(0, e)}
           rotation={rotation}
@@ -66,7 +71,7 @@ export const Cards: React.FC = () => {
         className="relative"
       >
         <Card
-          src="/ticket1-2.png"
+          src={theme === 'blue' ? '/ticket1-2.png' : '/ticket2-2.png'}
           isSelected={selectedCard === 1}
           onClick={(e) => handleCardClick(1, e)}
           rotation={rotation}

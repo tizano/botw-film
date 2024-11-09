@@ -26,10 +26,12 @@ export const Location: React.FC<LocationProps> = ({ theme, className }) => {
       )}
     >
       <Container htmlTag="div">
+        <div className="flex-items-center justify-center mb-24">
+          <Countdown eventDate={eventDate} />
+        </div>
         <div className="flex justify-center gap-28 items-start">
-          <Cards />
-          <div className="flex flex-col gap-10">
-            <Countdown eventDate={eventDate} />
+          <Cards theme={theme} />
+          <div className="flex flex-col gap-10 min-w-96">
             <Accordion type="single" collapsible>
               {citiesData.map((city) => (
                 <AccordionItem key={city.city} value={city.city}>

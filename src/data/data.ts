@@ -9,7 +9,7 @@ export interface FilmData {
   image_hero: string;
   image1_synopsis: string;
   image2_synopsis: string;
-  image3_synopsis?: string;
+  image3_synopsis: string;
 }
 
 export type FilmDataWithTheme = Record<Theme, FilmData>;
@@ -35,8 +35,9 @@ export const filmsData: FilmDataWithTheme = {
       "This film takes place in a world where traveling to parallel worlds is a common and everyday occurrence.<br /><br />The story focuses on Koyomi Hidaka, a boy who lives with his father after his parents' divorce. One day, he meets a girl named Shiori Satō in his father's research lab. After this encounter, they start a relationship that slowly turns into love.<br /><br />However, everything changes when their parents decide to get married. To continue their love, Koyomi and Shiori choose to move to a parallel world where they are not step-siblings.",
 
     image_hero: '/hero-red.webp',
-    image2_synopsis: '/synopsis-red.webp',
     image1_synopsis: '/char-red.png',
+    image2_synopsis: '/synopsis-red.webp',
+    image3_synopsis: '/char-red-2.png',
     video: 'https://www.youtube.com/embed/kLbN4JtzLbU',
   },
 };
